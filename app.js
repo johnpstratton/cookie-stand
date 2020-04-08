@@ -10,7 +10,6 @@ Display the values of each array as unordered lists in the browser
 // Seattle object properties include : min/customers(23), Max/Customers(65), Avg cookie/sale (6.3)
 // need to build an array for hours of operation
 // 
-var seattleArray = ['Seattle', 23, 65, 6.3]
 var storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm']
 
 // var seattleCity = {
@@ -28,7 +27,7 @@ function City (name, minCust, maxCust, avgCook, [], [], []) {
   this.avgCustEachHour = [];
   this.customers = [];
   this.totalCookiesPerHour = [];
-}
+};
 City.prototype.randoCust = function () {
   var min = this.minCust;
   var max = this.maxCust;
@@ -36,16 +35,17 @@ City.prototype.randoCust = function () {
 };
 City.prototype.randoEachHour = function () {
   for (var i = 0; i < storeHours.length; i++) {
-    var customers = this.City.randoCust()
+    var customers = City.randoCust()
     this.avgCustEachHour.push(customers)
   }
 };
 City.prototype.totalCookiesHour = function () {
   for (i = 0; i < customers.length; i++) {
-    var totalCookiesPerHour = this.City.randoEachHour() * this.avgCook.push(totalCookiesPerHour)
+    var totalCookiesPerHour = (City.randoEachHour() * this.avgCook.push(totalCookiesPerHour))
 
   }
 };
+// seattleCity.randoCust(this.avgCustEachHour);
 // City.prototype.randoCust();
 // console.log(this.avgCustEachHour);
 // totalCookiesHour();
@@ -57,16 +57,14 @@ var dubaiCity = new City('Dubai', 11, 38, 3.7, [], [], []);
 var parisCity = new City('Paris', 20, 38, 2.3, [], [], []);
 var limaCity = new City('Lima', 2, 16, 4.6, [], [], []);
 
-// return (seattleCity);
-// console.log(seattleCity);
-// this.randoCust();
-// console.log(tokyoCity);
-// console.log(dubaiCity);
-// console.log(parisCity);
-// console.log(limaCity);
 
-
-
+City.renderToPage = function(){
+  var targetUlEl = document.getElementById('fishy')
+  var newliEl = document.createElement('li')
+  var storeText = City
+  newliEl.textContent = storeText
+};
+renderToPage(seattleCity);
 // var seattleCity = {
 //   name: 'Seattle',
 //   minCust: 23,
