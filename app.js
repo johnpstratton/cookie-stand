@@ -33,10 +33,12 @@ City.prototype.randoCust = function () {
   var max = this.maxCust;
   return Math.random() * (this.maxCust - this.minCust) + this.minCust
 };
+
 City.prototype.randoEachHour = function () {
   for (var i = 0; i < storeHours.length; i++) {
     var customers = City.randoCust()
-    this.avgCustEachHour.push(customers)
+    this.avgCustEachHour.push(this.customers);
+    console.log(this.customers);
   }
 };
 City.prototype.totalCookiesHour = function () {
@@ -51,20 +53,28 @@ City.prototype.totalCookiesHour = function () {
 // totalCookiesHour();
 // console.log(randoCust(
 
+
 var seattleCity = new City('Seattle', 23, 65, 6.3, [], [], []);
 var tokyoCity = new City('Tokyo', 3, 24, 1.2, [], [], []);
 var dubaiCity = new City('Dubai', 11, 38, 3.7, [], [], []);
 var parisCity = new City('Paris', 20, 38, 2.3, [], [], []);
 var limaCity = new City('Lima', 2, 16, 4.6, [], [], []);
 
+this.seattleCity.randoEachHour();
 
-City.renderToPage = function(){
-  var targetUlEl = document.getElementById('fishy')
-  var newliEl = document.createElement('li')
-  var storeText = City
-  newliEl.textContent = storeText
-};
-renderToPage(seattleCity);
+// City.renderToPage = function(){
+//   var targetUlEl = document.getElementById('fishy')
+//   var newliEl = document.createElement('li')
+//   var storeText = City
+//   newliEl.textContent = storeText
+// };
+// renderToPage(seattleCity);
+
+
+
+
+
+
 // var seattleCity = {
 //   name: 'Seattle',
 //   minCust: 23,
