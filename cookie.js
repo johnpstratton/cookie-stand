@@ -19,14 +19,14 @@ var storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2p
 //   avgCook: seattleArray[3],
 //   avgCustEachHour: []
 // };
-function City (name, minCust, maxCust, avgCook, [], [], []) {
+function City(name, minCust, maxCust, avgCook) {
   this.name = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCook = avgCook;
   this.avgCustEachHour = [];
-  this.customers = [];
   this.totalCookiesPerHour = [];
+  this.totalCookies = 0;
 };
 City.prototype.randoCust = function () {
   var min = this.minCust;
@@ -34,34 +34,94 @@ City.prototype.randoCust = function () {
   return Math.random() * (this.maxCust - this.minCust) + this.minCust
 };
 
+// Calculates the value of the array, customers (per object), over the length of the array storeHours, and assigns the value to the variable customers
 City.prototype.randoEachHour = function () {
   for (var i = 0; i < storeHours.length; i++) {
-    var customers = City.randoCust()
-    this.avgCustEachHour.push(this.customers);
-    console.log(this.customers);
+    var customers = this.randoCust() * this.avgCook
+    this.avgCustEachHour.push(customers);
+    console.log(customers);
   }
 };
-City.prototype.totalCookiesHour = function () {
-  for (i = 0; i < customers.length; i++) {
-    var totalCookiesPerHour = (City.randoEachHour() * this.avgCook.push(totalCookiesPerHour))
-
-  }
+// Calculates the total value of cookies by taking the sum of the customers array and assigning it to a variable
+City.prototype.sumTotal = function () {
+  for (var i = 0; i < this.avgCustEachHour.length; i++)
+   this.totalCookies = this.totalCookies + this.avgCustEachHour[i];
+  return (this.totalCookies);
+  console.log(this.totalCookies);
 };
-// seattleCity.randoCust(this.avgCustEachHour);
-// City.prototype.randoCust();
-// console.log(this.avgCustEachHour);
-// totalCookiesHour();
-// console.log(randoCust(
 
 
-var seattleCity = new City('Seattle', 23, 65, 6.3, [], [], []);
-var tokyoCity = new City('Tokyo', 3, 24, 1.2, [], [], []);
-var dubaiCity = new City('Dubai', 11, 38, 3.7, [], [], []);
-var parisCity = new City('Paris', 20, 38, 2.3, [], [], []);
-var limaCity = new City('Lima', 2, 16, 4.6, [], [], []);
+var seattleCity = new City('Seattle', 23, 65, 6.3);
+var tokyoCity = new City('Tokyo', 3, 24, 1.2);
+var dubaiCity = new City('Dubai', 11, 38, 3.7);
+var parisCity = new City('Paris', 20, 38, 2.3);
+var limaCity = new City('Lima', 2, 16, 4.6);
 
-this.seattleCity.randoEachHour();
 
+seattleCity.randoEachHour();
+tokyoCity.randoEachHour();
+dubaiCity.randoEachHour();
+limaCity.randoEachHour();
+parisCity.randoEachHour();
+seattleCity.sumTotal();
+tokyoCity.sumTotal();
+dubaiCity.sumTotal();
+limaCity.sumTotal();
+parisCity.sumTotal();
+
+// -------THIS BLOCK OF CODE WILL RENDER EACH OBJECT TO PAGE WITHIN A TABLE
+City.prototype.renderStoresToTable = function () {
+// Step 1) Identify the target
+
+var myTable = document.getElementById('fishyTable');
+
+  var newTrowEl = document.createElement('tr');
+  var newThEl = document.createElement('th');
+  newThEl.textContent = this.name;
+  newTrowEl.appendChild(newThEl);
+
+  //  2.2 comes from the sales data
+  // 3. append
+  var tdEl=document.createElement('td');
+  tdEl.textContent = this.totalCookies;
+  newTrowEl.appendChild(tdEl);
+
+  myTable.appendChild(newTrowEl);
+};
+
+seattleCity.renderStoresToTable();
+tokyoCity.renderStoresToTable();
+dubaiCity.renderStoresToTable();
+limaCity.renderStoresToTable();
+parisCity.renderStoresToTable();
+
+/*
+Store.prototype.renderAsATableRow = function() {
+  // 1. find the target
+  var myTable = document.getElementById('cookieStores');
+  // 2. create the content -
+  //    2.1 put in a row)
+  var newTrowEl = document.createElement('tr');
+  //    actual text in cells(th and td)
+  var newThEl = document.createElement('th');
+  newThEl.textContent = this.storeName;
+  newTrowEl.appendChild(newThEl);
+
+  for(var i = 0; i < this.cookieSales.length; i++){
+    var tdEl = document.createElement('td');
+    tdEl.textContent = this.cookieSales[i];
+    newTrowEl.appendChild(tdEl);
+  }
+
+  var tdEl = document.createElement('td');
+  tdEl.textContent = this.total;
+  newTrowEl.appendChild(tdEl);
+
+
+  myTable.appendChild(newTrowEl);
+};
+
+*/
 // City.renderToPage = function(){
 //   var targetUlEl = document.getElementById('fishy')
 //   var newliEl = document.createElement('li')
