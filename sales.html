@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,19 @@
 </head>
 
 <body>
-
-  <table id="fishyTable"></table>
+  <form id="salmonCookies">
+    <fieldset>
+      <legend>Salmon Cookie Sales</legend>
+      <button id="newStore" type="submit">Open new location</button> 
+      <label for="locationName">Location Name</label>
+      <input type="text" name="locationName">
+      <table id="fishyTable"></table>
+    </fieldset>
+  </form>
   <ul>
     <li><a href="index.html">Back to Customer Page</a></li>
   </ul>
-  <script src= "cookie.js"></script>
+  <script src="cookie.js"></script>
 
 </body>
 

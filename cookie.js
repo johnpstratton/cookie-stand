@@ -37,7 +37,7 @@ City.prototype.randoCust = function () {
 // Calculates the value of the array, customers (per object), over the length of the array storeHours, and assigns the value to the variable customers
 City.prototype.randoEachHour = function () {
   for (var i = 0; i < storeHours.length; i++) {
-    var customers = this.randoCust() * this.avgCook
+    var customers = Math.floor(this.randoCust() * this.avgCook)
     this.avgCustEachHour.push(customers);
     console.log(customers);
   }
@@ -45,7 +45,7 @@ City.prototype.randoEachHour = function () {
 // Calculates the total value of cookies by taking the sum of the customers array and assigning it to a variable
 City.prototype.sumTotal = function () {
   for (var i = 0; i < this.avgCustEachHour.length; i++)
-   this.totalCookies = this.totalCookies + this.avgCustEachHour[i];
+    this.totalCookies = this.totalCookies + this.avgCustEachHour[i];
   return (this.totalCookies);
   console.log(this.totalCookies);
 };
@@ -71,18 +71,36 @@ parisCity.sumTotal();
 
 // -------THIS BLOCK OF CODE WILL RENDER EACH OBJECT TO PAGE WITHIN A TABLE
 City.prototype.renderStoresToTable = function () {
-// Step 1) Identify the target
-
-var myTable = document.getElementById('fishyTable');
+  // Step 1) Identify the target
+// The target has been identified so need to right 
+  var myTable = document.getElementById('fishyTable');
 
   var newTrowEl = document.createElement('tr');
   var newThEl = document.createElement('th');
   newThEl.textContent = this.name;
   newTrowEl.appendChild(newThEl);
+  myTable.appendChild(newTrowEl);
+
+  var newTrowEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = storeHours;
+  newTrowEl.appendChild(tdEl);
+  myTable.appendChild(newTrowEl);
+
+  
+
 
   //  2.2 comes from the sales data
+  var newTrowEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  tdEl.textContent = this.avgCustEachHour
+  newTrowEl.appendChild(tdEl);
+  myTable.appendChild(newTrowEl);
+  
+
   // 3. append
-  var tdEl=document.createElement('td');
+  var newTrowEl = document.createElement('tr');
+  var tdEl = document.createElement('tfoot');
   tdEl.textContent = this.totalCookies;
   newTrowEl.appendChild(tdEl);
 
@@ -94,6 +112,10 @@ tokyoCity.renderStoresToTable();
 dubaiCity.renderStoresToTable();
 limaCity.renderStoresToTable();
 parisCity.renderStoresToTable();
+
+
+
+var newStore = onclick.prototype.getElementById('newStore')
 
 /*
 Store.prototype.renderAsATableRow = function() {
